@@ -287,3 +287,45 @@ function enfermagem_has_gravatar( $user_email ) {
 	// If request status is 200, which means user has uploaded the avatar on gravatar site
 	return preg_match( "|200|", $headers[0] );
 }
+
+/***
+ * Function to calculate
+ * estimated read.
+ */
+function estimativeTimeRead( $the_content ) {
+	$trimmed_content = wp_trim_words( $the_content );
+	$countWords = str_word_count($trimmed_content);
+	$timeUnit = "Segundos";
+
+	if($countWords >= 60 && $countWords < 3600){
+		$countWords = round($countWords / 60);
+		$timeUnit = "Minutos";
+	}
+		
+	if($countWords >= 3600 ){
+		$countWords = round(($countWords / 60) / 60);
+		$timeUnit = "Horas";
+	}
+
+	echo $countWords . " " . $timeUnit; 
+}
+
+/**
+ * Function to get all categories
+ * 
+ */
+function getAllCategories() {
+	$categories = get_the_category();
+
+	foreach($categories as $category) {
+		$html = "<span class='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'> #";
+		
+		$html .= str_replace(" ", "", strtolower($category->name));
+
+		$html .= "</span>";
+
+		echo $html;
+	}
+} 
+
+	

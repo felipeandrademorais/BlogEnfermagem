@@ -1,5 +1,7 @@
 <?php
 
+require get_template_directory() . '/inc/helpers/template-tags.php';
+
 /**
  * Theme setup.
  */
