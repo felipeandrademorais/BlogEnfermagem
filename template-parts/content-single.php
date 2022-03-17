@@ -6,7 +6,7 @@
 	</header>
 
 	<!--image-->
-	<div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('https://source.unsplash.com/collection/1118905/'); height: 75vh;">
+	<div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('<?php echo get_the_post_thumbnail_url() ?>'); height: 75vh;">
 	</div>
 	
 
@@ -27,18 +27,5 @@
 			</div>
 		</div>
 		<!-- /Subscribe-->
-
-		<?php
-			wp_link_pages(
-				array(
-					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'tailpress' ) . '</span>',
-					'after'       => '</div>',
-					'link_before' => '<span>',
-					'link_after'  => '</span>',
-					'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'enfermagem' ) . ' </span>%',
-					'separator'   => '<span class="screen-reader-text">, </span>',
-				)
-			);
-		?>
 	</div>
 </article>

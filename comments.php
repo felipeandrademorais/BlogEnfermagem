@@ -10,6 +10,19 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area my-8">
+	
+	<?php if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'enfermagem' ); ?></p>
+	<?php endif; ?>
+
+	<?php
+		comment_form(
+			array(
+				'class_submit'  => 'bg-primary text-white cursor-pointer rounded font-bold py-2 px-4',
+				'comment_field' => '<textarea id="comment" name="comment" class="bg-gray-200 w-full py-2 px-3" aria-required="true"></textarea>',
+			)
+		);
+	?>
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
@@ -24,13 +37,7 @@ if ( post_password_required() ) {
 
 		<ol class="comment-list">
 			<?php
-				wp_list_comments(
-					array(
-						'style'       => 'ol',
-						'short_ping'  => true,
-						'avatar_size' => 56,
-					)
-				);
+				wp_list_comments( 'type=comment&callback=mytheme_comment' ); 
 			?>
 		</ol>
 
@@ -57,18 +64,5 @@ if ( post_password_required() ) {
 		</nav><!-- #comment-nav-above -->
 
 	<?php endif; ?>
-
-	<?php if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'enfermagem' ); ?></p>
-	<?php endif; ?>
-
-	<?php
-	comment_form(
-		array(
-			'class_submit'  => 'bg-primary text-white cursor-pointer rounded font-bold py-2 px-4',
-			'comment_field' => '<textarea id="comment" name="comment" class="bg-gray-200 w-full py-2 px-3" aria-required="true"></textarea>',
-		)
-	);
-	?>
 
 </div>

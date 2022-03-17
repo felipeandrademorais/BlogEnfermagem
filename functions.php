@@ -109,3 +109,86 @@ function tailpress_nav_menu_add_submenu_class( $classes, $args, $depth ) {
 }
 
 add_filter( 'nav_menu_submenu_css_class', 'tailpress_nav_menu_add_submenu_class', 10, 3 );
+
+/**
+ * Adds style to comments
+ */
+function mytheme_comment($comment, $args, $depth) {
+
+
+    if ( 'div' === $args['style'] ) {
+        $tag       = 'div';
+        $add_below = 'comment';
+    } else {
+        $tag       = 'li';
+        $add_below = 'div-comment';
+    }
+
+	?>
+
+	<!-- Comment Body -->
+    <<?php echo $tag ?> <?php comment_class('text-base') ?> id="comment-<?php comment_ID() ?>">
+
+    	<?php if ( 'div' != $args['style'] ) : ?>
+			<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+    	<?php endif; ?>
+    
+		<div class="comment-container">
+
+			<!-- Comment Author -->
+			<div class="comment-author vcard">
+				<?php echo get_avatar( $comment); ?>
+			</div>
+
+			<!-- Comment text -->
+			<div class="comment-box">
+
+				<!-- Comment Name and Date -->
+				<div class="comment-name">
+					<?php printf( __( '<cite class="fn">%s</cite>' ), get_comment_author_link() ); ?>
+					<div class="comment-date text-slate-400">
+						<?php printf( __('%1$s'), smk_get_comment_time()); ?></a><?php edit_comment_link( __( '(Edit)' ), '  ', '' );?>
+					</div>
+				</div>
+
+				<!-- Comment Text -->
+				<div class="comment-text">
+					<?php comment_text(); ?>
+				</div>
+
+				<!-- Comment Reply Button -->
+				<div class="reply text-base text-slate-500">
+					<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+				</div>
+
+			</div>
+		
+		</div>
+
+
+
+		<!-- Moderation -->
+    	<?php if ( $comment->comment_approved == '0' ) : ?>
+        	 <em class="comment-awaiting-moderation">
+				 <?php _e( 'Your comment is awaiting moderation.' ); ?>
+			</em>
+          	<br />
+    	<?php endif; ?>
+
+		
+		<?php if ( 'div' != $args['style'] ) : ?>
+			</div>
+		<?php endif; ?>
+    	<?php
+    }
+
+
+	function smk_get_comment_time( $comment_id = 0 ){
+		return sprintf( 
+			_x( '%s', 'Human-readable time', 'text-domain' ), 
+			human_time_diff( 
+				get_comment_date( 'U', $comment_id ), 
+				current_time( 'timestamp' ) 
+			) 
+		);
+	}
