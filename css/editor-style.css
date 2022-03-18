@@ -474,14 +474,14 @@
   line-height: 2rem
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem
 }
 
 .text-sm {
@@ -492,6 +492,11 @@
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem
 }
 
 .text-xl {
@@ -875,8 +880,8 @@ body {
     line-height: 1
   }
 
-  .lg\:text-5xl {
-    font-size: 3rem;
-    line-height: 1
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem
   }
 }

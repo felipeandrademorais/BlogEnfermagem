@@ -944,14 +944,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -962,6 +962,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-xl {
@@ -1264,11 +1269,14 @@ article > *:not(.entry-content), .entry-content > * {
 }
 
 .comment-body .comment-box {
+  width: 100%;
   margin-left: 1rem;
 }
 
 .comment-body .vcard {
   display: flex;
+  width: 100%;
+  max-width: 3rem;
   gap: 20px;
 }
 
@@ -1490,8 +1498,8 @@ article > *:not(.entry-content), .entry-content > * {
     line-height: 1;
   }
 
-  .lg\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }

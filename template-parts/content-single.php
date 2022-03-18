@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<!--Title-->
 	<header class="text-center">
-		<?php the_title( sprintf( '<h1 class="entry-title text-2xl lg:text-5xl font-extrabold leading-tight mb-1"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+		<?php the_title( sprintf( '<h1 class="entry-title text-4xl lg:text-4xl font-extrabold leading-tight mb-1"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
 		<time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-gray-700"><?php echo get_the_date(); ?></time>
 	</header>
 
@@ -14,7 +14,7 @@
 		<?php the_content(); ?>
 
 		<!--Subscribe-->	
-		<div class="container font-sans bg-green-100 rounded mt-8 p-4 md:p-24 text-center">
+		<!-- <div class="container font-sans bg-green-100 rounded mt-8 p-4 md:p-24 text-center">
 			<h2 class="font-bold break-normal text-2xl md:text-4xl">Subscribe to Ghostwind CSS</h2>
 			<h3 class="font-bold break-normal font-normal text-gray-600 text-base md:text-xl">Get the latest posts delivered right to your inbox</h3>
 			<div class="w-full text-center pt-4">
@@ -25,7 +25,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
+		</div> -->
 		<!-- /Subscribe-->
 	</div>
 </article>
