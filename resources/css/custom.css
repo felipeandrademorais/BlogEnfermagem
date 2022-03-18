@@ -152,3 +152,21 @@ article > *:not(.entry-content),
     border-radius: 3px;
 }
 
+/* Home Screen Cards */
+
+.thumnail-card {
+    object-fit: cover;
+}
+
+.cards .avatar-card {
+    position: relative;
+}
+
+.cards .avatar-card .avatar:hover .avatar::before {
+    position: absolute;
+    content: attr(data-name);
+    top: 1.5rem;
+    left: 2rem;
+    cursor: pointer;
+}
+

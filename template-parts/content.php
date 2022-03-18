@@ -1,6 +1,12 @@
-<div class="p-4 max-w-sm h-full">
+<?php 
+	$author_id = get_the_author_meta('ID');
+	$author_name = get_the_author_meta('display_name');
+	$author_avatar_url = get_avatar_url($author_id);
+?>
+
+<div class="p-4 max-w-sm h-full cards">
 	<a href="<?php echo esc_url( get_permalink()); ?>" class="flex-1 flex flex-wrap no-underline space-y-4 hover:no-underline">
-		<img src="https://source.unsplash.com/collection/225/800x600" class="h-64 w-full rounded-t pb-6">
+		<img src="<?php the_post_thumbnail_url('large') ?>" class="h-64 w-full rounded-t pb-6 thumnail-card">
 		<p class="w-full text-gray-600 text-xs md:text-sm px-6">
 			<?php getAllCategories(); ?>
 		</p>
@@ -18,8 +24,9 @@
 	</a>
 	
 	<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
-		<div class="flex items-center justify-between">
-			<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name" src="http://i.pravatar.cc/300" alt="Avatar of Author">
+		<div class="flex items-center justify-between avatar-card">
+
+			<img class="w-8 h-8 rounded-full mr-4 avatar" data-name="<?php echo $author_name; ?>" src="<?php echo esc_url($author_avatar_url); ?>" alt="Avatar of Author">
 			<p class="text-gray-600 text-xs md:text-sm">
 				<?php estimativeTimeRead($content); ?>
 			</p>
