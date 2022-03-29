@@ -2,6 +2,7 @@
 	$author_id = get_the_author_meta('ID');
 	$author_name = get_the_author_meta('display_name');
 	$author_avatar_url = get_avatar_url($author_id);
+	
 ?>
 
 <div class="p-4 max-w-sm h-full cards">
